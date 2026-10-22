@@ -2,7 +2,7 @@
   "name": "tsdown-plugin-vue",
   "type": "module",
   "version": "0.0.0",
-  "description": "Vue tsdown plugin",
+  "description": "Vue SFC support for tsdown",
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/sxzz",

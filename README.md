@@ -4,7 +4,7 @@
 [![npm downloads][npmx-downloads-src]][npmx-href]
 [![Unit Test][unit-test-src]][unit-test-href]
 
-Vue tsdown plugin
+Vue SFC support for tsdown
 
 ## Install
 
