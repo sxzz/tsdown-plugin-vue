@@ -38,7 +38,10 @@ test('builds a Vue SFC with JavaScript, CSS and declarations', async () => {
   expect(declaration).toContain('Counter')
   const fixturePath = resolve(import.meta.dirname, 'fixtures/basic/Counter.vue')
   expect({
-    'index.mjs': js.replaceAll(fixturePath, '<Counter.vue>'),
+    'index.mjs': js.replaceAll(
+      JSON.stringify(fixturePath),
+      JSON.stringify('<Counter.vue>'),
+    ),
     [cssFile!]: css,
     [declarationFile!]: declaration,
   }).toMatchSnapshot()
