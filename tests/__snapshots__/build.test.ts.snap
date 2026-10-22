@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`builds a Vue SFC with JavaScript, CSS and declarations 1`] = `
+{
+  "index.d.mts": "type __VLS_Props = {
+  message: string;
+};
+declare const __VLS_export: import("vue").DefineComponent<__VLS_Props, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
+declare const _default: typeof __VLS_export;
+export { _default as Counter };",
+  "index.mjs": "import { createElementBlock, defineComponent, openBlock, toDisplayString } from "vue";
+// \\0/plugin-vue/export-helper
+var export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+// tests/fixtures/basic/Counter.vue
+const _sfc_main = /*@__PURE__*/ defineComponent({
+	__name: "Counter",
+	props: { message: {
+		type: String,
+		required: true
+	} },
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const __returned__ = {};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+const _hoisted_1 = { class: "counter" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("p", _hoisted_1, toDisplayString($props.message), 1);
+}
+var Counter_default = /*#__PURE__*/ export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "<Counter.vue>"]]);
+export { Counter_default as Counter };
+",
+  "style.css": "
+.counter { color: red;
+}
+",
+}
+`;

@@ -7,7 +7,12 @@ export function Vue(options?: UnpluginVueOptions): TsdownPlugin {
     name: 'tsdown-plugin-vue',
     tsdownConfig() {
       return {
-        plugins: [UnpluginVue(options)],
+        plugins: [
+          UnpluginVue({
+            isProduction: true,
+            ...options,
+          }),
+        ],
         dts: { vue: true },
       }
     },

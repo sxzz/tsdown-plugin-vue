@@ -14,7 +14,10 @@ test('builds a Vue SFC with JavaScript, CSS and declarations', async () => {
     tsconfig: false,
     entry: resolve(import.meta.dirname, 'fixtures/basic/index.ts'),
     outDir,
-    plugins: [Vue()],
+    deps: {
+      neverBundle: ['vue'],
+    },
+    plugins: [Vue({ isProduction: false })],
     logLevel: 'silent',
   })
 
@@ -26,9 +29,17 @@ test('builds a Vue SFC with JavaScript, CSS and declarations', async () => {
   expect(js).toContain('counter')
   expect(js).toContain('message')
   expect(cssFile).toBeDefined()
-  expect(await readFile(join(outDir, cssFile!), 'utf8')).toContain('color: red')
   expect(declarationFile).toBeDefined()
-  expect(await readFile(join(outDir, declarationFile!), 'utf8')).toContain(
-    'Counter',
-  )
+
+  const css = await readFile(join(outDir, cssFile!), 'utf8')
+  const declaration = await readFile(join(outDir, declarationFile!), 'utf8')
+
+  expect(css).toContain('color: red')
+  expect(declaration).toContain('Counter')
+  const fixturePath = resolve(import.meta.dirname, 'fixtures/basic/Counter.vue')
+  expect({
+    'index.mjs': js.replaceAll(fixturePath, '<Counter.vue>'),
+    [cssFile!]: css,
+    [declarationFile!]: declaration,
+  }).toMatchSnapshot()
 }, 20_000)
